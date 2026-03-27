@@ -1,6 +1,11 @@
 "use strict";
 const pool = require('./dbConnection');
 
+async function getCategories(){
+    const
+}
+
+/*
 async function getAllProducts() {
     const queryText = "SELECT * FROM products";
     const result = await pool.query(queryText);
@@ -44,3 +49,4 @@ module.exports = {
     deleteProduct,
     addProduct
 };
+*/

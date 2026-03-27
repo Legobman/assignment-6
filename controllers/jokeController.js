@@ -1,5 +1,5 @@
 "use strict";
-const model = require('../models/productModel');
+const model = require('../models/jokeModel');
 
 async function fetchAllProducts(req, res) {
     try {

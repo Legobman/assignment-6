@@ -17,6 +17,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
+const jokeRoutes = require("./routes/jokeRoutes");
+app.use('/jokebook', jokeRoutes);
+
 /*
 async function testDb() {
     let queryText = "INSERT INTO products ( name, type, price, description) VALUES ($1, $2, $3, $4) RETURNING *";
@@ -26,7 +29,7 @@ async function testDb() {
     console.log('result from inserting: ', result);
 }
 testDb();
-*/
+
 
 //http://localhost:3000/products/1
 app.get("/products/:id", async function (req, res) {
@@ -100,7 +103,7 @@ app.post("/products/add", async function (req, res) {
     res.status(400).send("Missing required param!");
 
   }});
-
+*/
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, function () {
   console.log("Server listening on port: " + PORT + "!");

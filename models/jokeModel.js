@@ -25,10 +25,14 @@ async function getRandomJoke() {
 }
 
 async function addJoke(setup, delivery, category) {
-    let queryText = "INSERT INTO jokebook (setup, delivery, category) VALUES ($1, $2, $3) RETURNING *";
+    let queryText = "INSERT INTO jokebook (setup, delivery, category) VALUES ($1, $2, $3)";
     let values = [setup, delivery, category];
+    await pool.query(queryText, values);
+
+    queryText = "SELECT setup, delivery FROM jokebook WHERE category = $1";
+    values = [category];
     const result = await pool.query(queryText, values);
-    return result.rows[0];
+    return result.rows;
 }
 
 module.exports = {

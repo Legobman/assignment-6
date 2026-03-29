@@ -13,6 +13,9 @@ document.getElementById("jokeSearch").addEventListener("click", (e) => {
   getJokesByCategory(category, limit);
 });
 
+document.getElementById("insertJoke").addEventListener("submit", addJoke);
+
+
 async function getRandomJoke(){
   const res = await fetch(MY_SERVER_BASEURL + "/random");
   const joke = await res.json();
@@ -36,16 +39,14 @@ async function getCategories(){
   categories.forEach(element => {
     const type = document.createElement("li");
     type.textContent = element.category;
-    type.addEventListener("click", () => getJokesByCategory(element.category, 0));
+    type.addEventListener("click", () => getJokesByCategory(element.category));
     types.appendChild(type);
   });
 }
 
 async function getJokesByCategory(category, limit){
   let url = MY_SERVER_BASEURL + "/category/" + category;
-  if(limit === 0 || limit === undefined){
-    
-  } else{
+  if(limit){
     url += "?limit=" + limit;
   }
   try{
@@ -69,5 +70,34 @@ async function getJokesByCategory(category, limit){
     console.error(err);
     alert("Search failed");
   }
-  
+}
+
+async function addJoke(e) {
+  e.preventDefault();
+
+  const setup = document.getElementById("setup").value;
+  const delivery = document.getElementById("delivery").value;
+  const category = document.getElementById("category").value;
+
+  try{
+    const res = await fetch("/jokebook/joke/add", {
+      method: "POST",
+      headers: {
+          Accept: "application/json, text/plain, */*",
+          "Content-Type": "application/json",
+      },
+      body: JSON.stringify({setup, delivery, category}),
+    });
+
+    if(!res.ok) {
+      const eText = await res.text();
+      throw new Error(eText)
+    }
+
+    await getJokesByCategory(category);
+    
+  } catch(err){
+    console.error(err);
+    alert("add joke failed")
+  }
 }

@@ -26,7 +26,7 @@ async function fetchJokesByCategory(req, res) {
             res.status(500).send("Server error");
         }
     } else {
-        res.status(400).send("Missing required type param!");
+        res.status(400).send("Missing required category param!");
     }
 }
 
@@ -52,7 +52,7 @@ async function createJoke(req, res) {
             res.status(500).send("Server error");
         }
     } else {
-        res.status(400).send("Missing required product fields!");
+        res.status(400).send("Missing one or more of these fields: setup, delivery, category.");
     }
 }
 module.exports = {

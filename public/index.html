@@ -8,9 +8,43 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Products List</h1>
-    <div id="products-container">
-        <!-- Products will appear here. -->
-    </div>
+    <article>
+        <h2>Random Joke:</h2>
+        <div id="randomJoke">
+        
+        </div>
+    </article>
+    <article>
+        <h2>Categories</h2>
+        <ul id="categoryTypes">
+
+        </ul>
+    </article>
+    <article>
+        <h2>Search Joke by Catoegory:</h2>
+        <form>
+            <input type="text" id="searchCategory" placeholder="Category" required>
+            <input type="number" id="limit" placeholder="Limit">
+            <button id="jokeSearch">Search</button>
+        </form>
+    </article>
+    <article>
+        <h2>Jokes:</h2>
+        <ul id="jokeList">
+            
+        </ul>
+    </article>
+    <article>
+        <h2>Add Joke:</h2>
+        <form id="insertJoke">
+            <input type="text" id="setup" placeholder="Setup" required>
+            <br>
+            <input type="text" id="delivery" placeholder="Delivery" required>
+            <br>
+            <input type="text" id="category" placeholder="Category" required>
+            <br>
+            <button type="submit">Add Joke</button>
+        </form>
+    </article>
 </body>
 </html>

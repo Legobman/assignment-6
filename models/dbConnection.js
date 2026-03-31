@@ -1,3 +1,4 @@
+// file that actually connects the database to these files, allowing communication.
 require('dotenv').config();
 const { Pool } = require('pg');
 

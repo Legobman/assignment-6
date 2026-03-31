@@ -1,6 +1,7 @@
 "use strict";
 const pool = require('./dbConnection');
 
+// All of the sql statements and queries needed for the functions to talk to the database
 async function getCategories() {
     const queryText = "SELECT DISTINCT category FROM jokebook";
     const result = await pool.query(queryText);

@@ -3,6 +3,7 @@ body {
   display: block;  
   gap: 20px;
   justify-content: center;
+  background-color: lightblue;
 }
 article{
   display: flex;

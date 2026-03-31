@@ -1,6 +1,7 @@
 "use strict";
 const model = require('../models/jokeModel');
 
+// the controller files that prepares and handles data to and from the model
 async function fetchAllCategories(req,res) {
     try{
         const categories = await model.getCategories();

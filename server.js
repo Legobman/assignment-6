@@ -1,4 +1,5 @@
 //server.js
+// all of the elements that are required for these files to function and setting up the baseline.
 "use strict";
 const express = require("express");
 const app = express();
